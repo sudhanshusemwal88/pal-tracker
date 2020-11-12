@@ -18,4 +18,11 @@ spec:
     spec:
       containers:
         - name: pal-tracker-container
-          image: sudhanshusemwal88/pal-tracker:v0
+          image: sudhanshusemwal88/pal-tracker:v1
+          env:
+            - name: WELCOME_MESSAGE
+              valueFrom:
+                configMapKeyRef:
+                  name: pal-tracker
+                  key: welcome.message
+

@@ -1,0 +1,201 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  annotations:
+    cni.projectcalico.org/podIP: 192.168.15.7/32
+    cni.projectcalico.org/podIPs: 192.168.15.7/32
+  creationTimestamp: "2020-11-11T08:00:23Z"
+  generateName: pal-tracker-5b549bb8f6-
+  labels:
+    app: pal-tracker
+    name: pal-tracker-pod
+    pod-template-hash: 5b549bb8f6
+  managedFields:
+  - apiVersion: v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:generateName: {}
+        f:labels:
+          .: {}
+          f:app: {}
+          f:name: {}
+          f:pod-template-hash: {}
+        f:ownerReferences:
+          .: {}
+          k:{"uid":"12a96c95-e222-4e1c-99f1-7b916e9f5942"}:
+            .: {}
+            f:apiVersion: {}
+            f:blockOwnerDeletion: {}
+            f:controller: {}
+            f:kind: {}
+            f:name: {}
+            f:uid: {}
+      f:spec:
+        f:containers:
+          k:{"name":"pal-tracker-container"}:
+            .: {}
+            f:env:
+              .: {}
+              k:{"name":"WELCOME_MESSAGE"}:
+                .: {}
+                f:name: {}
+                f:valueFrom:
+                  .: {}
+                  f:configMapKeyRef:
+                    .: {}
+                    f:key: {}
+                    f:name: {}
+            f:image: {}
+            f:imagePullPolicy: {}
+            f:name: {}
+            f:resources: {}
+            f:terminationMessagePath: {}
+            f:terminationMessagePolicy: {}
+        f:dnsPolicy: {}
+        f:enableServiceLinks: {}
+        f:restartPolicy: {}
+        f:schedulerName: {}
+        f:securityContext: {}
+        f:terminationGracePeriodSeconds: {}
+    manager: kube-controller-manager
+    operation: Update
+    time: "2020-11-11T08:00:23Z"
+  - apiVersion: v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          .: {}
+          f:cni.projectcalico.org/podIP: {}
+          f:cni.projectcalico.org/podIPs: {}
+    manager: calico
+    operation: Update
+    time: "2020-11-11T08:00:24Z"
+  - apiVersion: v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:status:
+        f:conditions:
+          k:{"type":"ContainersReady"}:
+            .: {}
+            f:lastProbeTime: {}
+            f:lastTransitionTime: {}
+            f:status: {}
+            f:type: {}
+          k:{"type":"Initialized"}:
+            .: {}
+            f:lastProbeTime: {}
+            f:lastTransitionTime: {}
+            f:status: {}
+            f:type: {}
+          k:{"type":"Ready"}:
+            .: {}
+            f:lastProbeTime: {}
+            f:lastTransitionTime: {}
+            f:status: {}
+            f:type: {}
+        f:containerStatuses: {}
+        f:hostIP: {}
+        f:phase: {}
+        f:podIP: {}
+        f:podIPs:
+          .: {}
+          k:{"ip":"192.168.15.7"}:
+            .: {}
+            f:ip: {}
+        f:startTime: {}
+    manager: kubelet
+    operation: Update
+    time: "2020-11-11T08:00:26Z"
+  name: pal-tracker-5b549bb8f6-zwpv9
+  namespace: development
+  ownerReferences:
+  - apiVersion: apps/v1
+    blockOwnerDeletion: true
+    controller: true
+    kind: ReplicaSet
+    name: pal-tracker-5b549bb8f6
+    uid: 12a96c95-e222-4e1c-99f1-7b916e9f5942
+  resourceVersion: "411166"
+  selfLink: /api/v1/namespaces/development/pods/pal-tracker-5b549bb8f6-zwpv9
+  uid: 700515da-ec32-4b7e-a149-dfb1338f27fa
+spec:
+  containers:
+  - env:
+    - name: WELCOME_MESSAGE
+      valueFrom:
+        configMapKeyRef:
+          key: welcome.message
+          name: pal-tracker
+    image: sudhanshusemwal88/pal-tracker:v1
+    imagePullPolicy: IfNotPresent
+    name: pal-tracker-container
+    resources: {}
+    terminationMessagePath: /dev/termination-log
+    terminationMessagePolicy: File
+    volumeMounts:
+    - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      name: default-token-wm89v
+      readOnly: true
+  dnsPolicy: ClusterFirst
+  enableServiceLinks: true
+  nodeName: mylab
+  priority: 0
+  restartPolicy: Always
+  schedulerName: default-scheduler
+  securityContext: {}
+  serviceAccount: default
+  serviceAccountName: default
+  terminationGracePeriodSeconds: 30
+  tolerations:
+  - effect: NoExecute
+    key: node.kubernetes.io/not-ready
+    operator: Exists
+    tolerationSeconds: 300
+  - effect: NoExecute
+    key: node.kubernetes.io/unreachable
+    operator: Exists
+    tolerationSeconds: 300
+  volumes:
+  - name: default-token-wm89v
+    secret:
+      defaultMode: 420
+      secretName: default-token-wm89v
+status:
+  conditions:
+  - lastProbeTime: null
+    lastTransitionTime: "2020-11-11T08:00:23Z"
+    status: "True"
+    type: Initialized
+  - lastProbeTime: null
+    lastTransitionTime: "2020-11-11T08:00:26Z"
+    status: "True"
+    type: Ready
+  - lastProbeTime: null
+    lastTransitionTime: "2020-11-11T08:00:26Z"
+    status: "True"
+    type: ContainersReady
+  - lastProbeTime: null
+    lastTransitionTime: "2020-11-11T08:00:23Z"
+    status: "True"
+    type: PodScheduled
+  containerStatuses:
+  - containerID: docker://b524d5c3ee2810b989eaad27f11b923ab90c1ce41b0f52879eb51543fa3b0db9
+    image: sudhanshusemwal88/pal-tracker:v1
+    imageID: docker://sha256:bd5041d829174dd9fc9f04f543395e4846fc1232901e81c6e130304862ced38c
+    lastState: {}
+    name: pal-tracker-container
+    ready: true
+    restartCount: 0
+    started: true
+    state:
+      running:
+        startedAt: "2020-11-11T08:00:25Z"
+  hostIP: 172.31.25.19
+  phase: Running
+  podIP: 192.168.15.7
+  podIPs:
+  - ip: 192.168.15.7
+  qosClass: BestEffort
+  startTime: "2020-11-11T08:00:23Z"
